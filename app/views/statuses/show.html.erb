@@ -2,6 +2,10 @@
 
 <p>
   <strong>Name:</strong>
+  
+  <%=@status.user.full_name%>
+
+
 
 </p>
 
@@ -10,5 +14,7 @@
   <%= @status.content %>
 </p>
 
+<div class="admin">
 <%= link_to 'Edit', edit_status_path(@status) %> |
 <%= link_to 'Back', statuses_path %>
+</div>

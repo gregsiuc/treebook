@@ -1,20 +1,39 @@
 class StatusesController < ApplicationController
+  
+
+  
   before_action :set_status, only: [:show, :edit, :update, :destroy]
 
   # GET /statuses
   # GET /statuses.json
   def index
     @statuses = Status.all
+
+    #@statuses.each do |status|
+      #first_name = User.find_by(status.user_id)
+      #@statuses ={first_name => first_name} 
+
+      #puts "IN THE METHOD BABY #{first_name.inspect}"
+
+      #puts "DONE WITH THE METHOD LOOK AT STATUSES  #{@statuses.inspect}"
+    
+
   end
 
   # GET /statuses/1
   # GET /statuses/1.json
   def show
+
+
   end
+
+
 
   # GET /statuses/new
   def new
     @status = Status.new
+   
+    
   end
 
   # GET /statuses/1/edit
@@ -25,6 +44,7 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = Status.new(status_params)
+   
 
     respond_to do |format|
       if @status.save
@@ -65,10 +85,17 @@ class StatusesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_status
       @status = Status.find(params[:id])
+      puts "in set status"
     end
+
+    #def set_user
+    #  @status.user = User.find_by(@status.user_id)
+    #end
+
+  
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_params
-      params.require(:status).permit(:name, :content)
+      params.require(:status).permit(:content, :user_id)
     end
 end
